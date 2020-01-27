@@ -1,0 +1,20 @@
+{
+  "name": "blogposts",
+  "version": "1.0.0",
+  "description": "",
+  "main": "build.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "upload": "node build.js && bash syncs3.sh",
+    "rebuild": "node build.js",
+    "rebuild-all": "node build.js rebuild",
+    "rebuild-post": "node build.js post"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "file-type": "^13.1.2",
+    "sharp": "^0.24.0",
+    "uuid": "^3.4.0"
+  }
+}
