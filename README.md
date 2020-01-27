@@ -2,7 +2,7 @@
 
 This project contains a super simple upload tool to upload blog posts to [my personal blog](https://www.digglesby.com). Posts are converted to JSON files containing markdown, images are automatically resized and compressed for optimization, and files are synced to S3.
 
-# Usage
+## Usage
 
 Sync new files
 ```bash
@@ -19,7 +19,28 @@ Reset CACHE_ID for all posts
 npm run rebuild-all
 ```
 
-# What does it do?
+## Post file setup
+meta.json:
+```
+url      - URL Slug
+date     - Creation UNIX timestamp
+name     - Title,
+summary  - Short description for SEO
+```
+
+post.md:
+```
+--Files must be referenced from "media/" NOT "./media/" or "/media/"
+--Title is used in meta.json and shouldn't be added
+```
+
+/media:
+```
+--Files go here
+```
+
+
+## What does it do?
 
 My blog works by calling an AWS lambda function that returns a manifest.json file from S3. The `manifest.json` file contains metadata for every blog post on my site.
 
@@ -37,7 +58,8 @@ This tool
 
 From there the website requests `manifest.json` and requests each `post.json` as needed.
 
-# Why does it do this?
+
+## Why does it do this?
 
 My goal for my blog is to keep in running as long as possible as cheaply as possible. The low traffic my blog generates means that my use case fits really well with AWS Lambda for pricing, so the site is built using Next.js and Serverless.js to run on Lambda.
 
